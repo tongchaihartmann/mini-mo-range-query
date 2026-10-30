@@ -1,6 +1,6 @@
 [project]
 name = "mini-mo-range-query"
-version = "0.1.0"
+version = "0.1.1"
 description = "Processes offline range queries in batches by reordering them using block decomposition for efficient execution."
 requires-python = ">=3.10"
 dependencies = []
