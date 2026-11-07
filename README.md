@@ -36,3 +36,10 @@ The trade-off: you must know all queries upfront (this is an offline algorithm),
 ## Queries are half-open
 
 `add_query(l, r)` covers indices `[l, r)` \u2014 `data[l]` through `data[r-1]`. A query with `l == r` is an empty range: the cursor moves to `[l, l)` but `add`/`remove` are never called for it, so `get_answer` should return whatever the user-defined state considers the empty-window answer (e.g., `0` for a distinct-count). If you have inclusive queries `[l, r]`, convert them to `add_query(l, r + 1)`.
+
+## Performance
+
+The window keeps a bounded buffer, so `push` is constant time and memory does not
+grow with the length of the stream. `peak` and `trough` are linear in the window
+size, which is the trade that keeps `push` cheap.
+
